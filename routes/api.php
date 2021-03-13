@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\api\CakeDataController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -17,3 +18,13 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+Route::get('/cakes', [CakeDataController::class, 'index']);
+
+Route::get('/cakes/{id}', [CakeDataController::class, 'show']);
+
+Route::post('/cakes', [CakeDataController::class, 'store']);
+
+Route::put('/cakes/{id}', [CakeDataController::class, 'update']);
+
+Route::delete('/cakes/{id}', [CakeDataController::class, 'destroy']);
